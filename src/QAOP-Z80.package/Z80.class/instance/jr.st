@@ -1,5 +1,5 @@
 instructions
-jr: aBoolean
+jr
 
 	| pc d | 
 	
