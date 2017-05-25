@@ -4,6 +4,14 @@ opcodes02: c
 	| v |
 	
 	c caseOf: { 
+		[ 16r24 ] -> [ 
+			HL := HL & 16rFF | ((self inc: (HL bitShift: 8)) << 8) ].
+		[ 16r25 ] -> [ 
+			HL := HL & 16rFF | ((self dec: (HL bitShift: 8)) << 8) ].
+		[ 16r26 ] -> [ 
+			HL := HL & 16rFF | (self imm8 << 8) ].
+		[ 16r2C ] -> [ 
+			HL := HL & 16rFF00 | (self inc: (HL & 16rFF)) ].
 		[ 16r2D ] -> [ 
 			HL := HL & 16rFF00 | (self dec: (HL & 16rFF)) ].
 		[ 16r2E ] -> [ 
@@ -26,5 +34,19 @@ opcodes02: c
 		[ 16r3E ] -> [ A := self imm8 ].
 		[ 16r20 ] -> [ 
 			(Fr ~= 0) ifTrue: [ self jr ] ifFalse: [ self imm8 ]].
-	
+		[ 16r28 ] -> [ 
+			(Fr = 0) ifTrue: [ self jr ] ifFalse: [ self imm8 ]].
+		[ 16r30 ] -> [ 
+			((Ff & 16r100) = 0) ifTrue: [ self jr ] ifFalse: [ self imm8 ]].
+		[ 16r38 ] -> [ 
+			((Ff & 16r100) ~= 0) ifTrue: [ self jr ] ifFalse: [ self imm8 ]].
+		[ 16r07 ] -> [ 
+			self rot: ((A * 16r101) bitShift: 7)].
+		[ 16r0F ] -> [ 
+			self rot: ((A * 16r80800000) bitShift:24)].
+		[ 16r17 ] -> [ 
+			self rot: ((A << 1) | ((Ff bitShift: 8) & 1))].
+		[ 16r1F ] -> [ 
+			self rot: ((A * 16r201) | ((Ff & 16r100) bitShift: 1))].
+		
  } 

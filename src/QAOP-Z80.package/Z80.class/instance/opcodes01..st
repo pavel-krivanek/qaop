@@ -96,12 +96,4 @@ opcodes01: c
 		[ 16r1C ] -> [ E := self inc: E. ].
 		[ 16r1D ] -> [ E := self dec: E. ].
 		[ 16r1E ] -> [ E := self imm8 ].
-		[ 16r24 ] -> [ 
-			HL := HL & 16rFF | ((self inc: (HL bitShift: 8)) << 8) ].
-		[ 16r25 ] -> [ 
-			HL := HL & 16rFF | ((self dec: (HL bitShift: 8)) << 8) ].
-		[ 16r26 ] -> [ 
-			HL := HL & 16rFF | (self imm8 << 8) ].
-		[ 16r2C ] -> [ 
-			HL := HL & 16rFF00 | (self inc: (HL & 16rFF)) ].
  } 
