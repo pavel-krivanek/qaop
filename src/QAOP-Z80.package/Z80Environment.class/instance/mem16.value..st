@@ -1,2 +1,2 @@
 as yet unclassified
-mem16: addr to: v
+mem16: addr value: v

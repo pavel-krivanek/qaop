@@ -8,7 +8,7 @@ cpir: i if: aBoolean
 	HL := (a+i) char.
 	time := time + 8.
 	
-	Fr := v & 16r7F | (v bitShift: 7).
+	Fr := v & 16r7F | (v >>> 7).
 	Fb := (b | 16r80) bitInvert32.
 	Fa := A & 16r7F.
 	

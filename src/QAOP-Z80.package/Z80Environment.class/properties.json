@@ -5,7 +5,10 @@
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
-	"instvars" : [ ],
+	"instvars" : [
+		"z80",
+		"memory"
+	],
 	"name" : "Z80Environment",
 	"type" : "normal"
 }

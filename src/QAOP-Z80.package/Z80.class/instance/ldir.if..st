@@ -6,7 +6,7 @@ ldir: i if: aBoolean
 	v := env mem: (a := HL).
 	HL := (a+i) char.
 	time := time + 3.
-	env mem: (a := self de) to: v.
+	env mem: (a := self de) value: v.
 	self de: (a+i) char.
 	time := time + 5.
 	

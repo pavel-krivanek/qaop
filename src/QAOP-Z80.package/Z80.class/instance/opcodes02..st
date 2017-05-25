@@ -5,9 +5,9 @@ opcodes02: c
 	
 	c caseOf: { 
 		[ 16r24 ] -> [ 
-			HL := HL & 16rFF | ((self inc: (HL bitShift: 8)) << 8) ].
+			HL := HL & 16rFF | ((self inc: (HL >>> 8)) << 8) ].
 		[ 16r25 ] -> [ 
-			HL := HL & 16rFF | ((self dec: (HL bitShift: 8)) << 8) ].
+			HL := HL & 16rFF | ((self dec: (HL >>> 8)) << 8) ].
 		[ 16r26 ] -> [ 
 			HL := HL & 16rFF | (self imm8 << 8) ].
 		[ 16r2C ] -> [ 
@@ -19,15 +19,15 @@ opcodes02: c
 		[ 16r34 ] -> [ 
 			v := self inc: (env mem: HL).
 			time := time + 4.
-			env mem: HL to: v.
+			env mem: HL value: v.
 			time := time + 3].
 		[ 16r35 ] -> [ 
 			v := self dec: (env mem: HL).
 			time := time + 4.
-			env mem: HL to: v.
+			env mem: HL value: v.
 			time := time + 3].
 		[ 16r36 ] -> [ 
-			env mem: HL to: self imm8.
+			env mem: HL value: self imm8.
 			time := time + 3].
 		[ 16r3C ] -> [ A := self inc: A. ].
 		[ 16r3D ] -> [ A := self dec: A. ].
@@ -41,12 +41,12 @@ opcodes02: c
 		[ 16r38 ] -> [ 
 			((Ff & 16r100) ~= 0) ifTrue: [ self jr ] ifFalse: [ self imm8 ]].
 		[ 16r07 ] -> [ 
-			self rot: ((A * 16r101) bitShift: 7)].
+			self rot: ((A * 16r101) >>> 7)].
 		[ 16r0F ] -> [ 
-			self rot: ((A * 16r80800000) bitShift:24)].
+			self rot: ((A * 16r80800000) >>> 24)].
 		[ 16r17 ] -> [ 
-			self rot: ((A << 1) | ((Ff bitShift: 8) & 1))].
+			self rot: ((A << 1) | ((Ff >>> 8) & 1))].
 		[ 16r1F ] -> [ 
-			self rot: ((A * 16r201) | ((Ff & 16r100) bitShift: 1))].
+			self rot: ((A * 16r201) | ((Ff & 16r100) >>> 1))].
 		
  } 

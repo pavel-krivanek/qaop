@@ -1,4 +1,4 @@
 accessing registers
 i
 
-	^ IR bitShift: 8
+	^ IR >>> 8

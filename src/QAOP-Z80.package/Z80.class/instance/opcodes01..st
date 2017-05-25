@@ -24,11 +24,11 @@ opcodes01: c
 		[ 16r39 ] -> [ HL := self add16: HL with: SP ].
 		[ 16r01 ] -> [ 
 			v := self imm16.
-			B := v bitShift: 8.
+			B := v >>> 8.
 			C := v & 16rFF. ].
 		[ 16r11 ] -> [ 
 			v := self imm16.
-			D := v bitShift: 8.
+			D := v >>> 8.
 			E := v & 16rFF ].
 		[ 16r21 ] -> [ 	HL := self imm16. ].
 		[ 16r23 ] -> [ 	HL := (HL+1) char. time := time + 2. ].
@@ -54,7 +54,7 @@ opcodes01: c
 			time := time + 2]].
 		[ 16r02 ] -> [ 
 			MP := (v := (B << 8) | C) + 1 & 16rFF | (A<<8).
-			env  mem: v to: A.
+			env  mem: v value: A.
 			time := time + 3.].
 		[ 16r0A ] -> [ 
 			MP := (v := (B << 8) | C) + 1.
@@ -62,7 +62,7 @@ opcodes01: c
 			time := time + 3.].
 		[ 16r12 ] -> [ 
 			MP := (v := (D << 8) | E) + 1 & 16rFF | (A<<8).
-			env  mem: v to: A.
+			env  mem: v value: A.
 			time := time + 3.].
 		[ 16r1A ] -> [ 
 			MP := (v := (D << 8) | E) + 1.
@@ -70,7 +70,7 @@ opcodes01: c
 			time := time + 3.].
 		[ 16r22 ] -> [ 
 			MP := (v := self imm16)+1.
-			env mem16: v to: HL.
+			env mem16: v value: HL.
 			time := time + 6 ].
 		[ 16r2A ] -> [ 
 			MP := (v := self imm16)+1.
@@ -78,7 +78,7 @@ opcodes01: c
 			time := time + 6 ].
 		[ 16r32 ] -> [ 
 			MP := (v := self imm16)+1 & 16rFF | (A << 8).
-			env mem: v to: A.
+			env mem: v value: A.
 			time := time + 3 ].
 		[ 16r3A ] -> [ 
 			MP := (v := self imm16)+1.

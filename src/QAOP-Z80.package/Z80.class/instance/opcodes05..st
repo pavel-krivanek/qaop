@@ -47,12 +47,12 @@ opcodes05: c
 		[ 16rFC ] -> [ self call: ((Ff & FS) ~= 0) ].
 		[ 16rC1 ] -> [ 
 			v := self pop.
-			B := v bitShift: 8.
+			B := v >>> 8.
 			C := v & 16rFF ].
 		[ 16rC5 ] -> [ self push: ((B << 8) | C) ].
 		[ 16rD1 ] -> [ 
 			v := self pop.
-			D := v bitShift: 8.
+			D := v >>> 8.
 			E := v & 16rFF ].
 		[ 16rD5 ] -> [ self push: ((D << 8) | E) ].
 		[ 16rE1 ] -> [ HL := self pop. ].
@@ -89,7 +89,7 @@ opcodes05: c
 		[ 16rEB ] -> [ 
 			v := HL.
 			HL := (D << 8) | E.
-			D := v bitShift: 8.
+			D := v >>> 8.
 			E := v & 16rFF ].		
 		[ 16rF3 ] -> [ IFF := 0 ].
 		[ 16rFB ] -> [ IFF := 3 ].

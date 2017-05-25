@@ -1,5 +1,5 @@
 accessing registers
 af: v
 
-	A := v bitShift: 8.
+	A := v >>> 8.
 	self flags: v &16rFF.

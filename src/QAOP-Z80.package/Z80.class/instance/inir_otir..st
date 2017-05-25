@@ -14,7 +14,7 @@ inir_otir: op
 			time := time + 4.
 			MP := bc + d.
 			bc := (bc - 256) char.
-			env mem: HL to: v.
+			env mem: HL value: v.
 			time := time + 3.
 			d := d + bc ]
 		ifFalse: [ 
@@ -35,6 +35,6 @@ inir_otir: op
 		x := (d & 7) bitXor: bc.
 		Ff := bc | (d := d & 16r0100).
 		Fa := (Fr := bc) bitXor: 16r80.
-		x := 16r4B3480 >> (((x bitXor: x) bitShift: 4) & 15).
-		Fb := ((x bitXor: bc) & 16r80) | (d bitShift: 4) | ((v & 16r80) << 2).
+		x := 16r4B3480 >> (((x bitXor: x) >>> 4) & 15).
+		Fb := ((x bitXor: bc) & 16r80) | (d >>> 4) | ((v & 16r80) << 2).
 	
