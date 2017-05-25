@@ -12,4 +12,6 @@ step
 	self opcodes02: c.
 	self opcodes03: c.
 	self opcodes04: c.
+	self opcodes05: c.
+	self opcodes06: c.
  

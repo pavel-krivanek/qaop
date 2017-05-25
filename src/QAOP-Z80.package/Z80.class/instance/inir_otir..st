@@ -22,7 +22,7 @@ inir_otir: op
 			time := time + 3.
 			bc := (bc - 256) char.
 			MP := bc + d.
-			env out: bc to: v.
+			env out: bc value: v.
 			time := time + 4.
 			d := hl ].
 		
