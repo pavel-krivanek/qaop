@@ -1,0 +1,4 @@
+accessing registers
+iy
+
+	^ IY

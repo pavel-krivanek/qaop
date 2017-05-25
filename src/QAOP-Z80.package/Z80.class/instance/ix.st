@@ -1,0 +1,4 @@
+accessing registers
+ix
+
+	^ IX

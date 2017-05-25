@@ -1,0 +1,4 @@
+accessing registers
+sp
+
+	^ SP
