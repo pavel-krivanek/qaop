@@ -3,7 +3,7 @@ daa
 
 	| h d |
 	
-	h := Fr bitXor: (Fa bitXor: (Fb bitXor: (Fb >> 8))) & FH.
+	h := ((Fr bitXor: Fa) bitXor: Fb) bitXor: (Fb >> 8) & FH.
 	d := 0.
 	((A | Ff & 16r100) > 16r99) ifTrue: [ d := 16r160 ].
 	((A & 16rF | h) > 9) ifTrue: [ d := d + 6 ].
