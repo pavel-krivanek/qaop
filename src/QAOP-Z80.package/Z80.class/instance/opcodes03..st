@@ -1,8 +1,6 @@
 execution
 opcodes03: c
 	
-	| v |
-	
 	c caseOf: { 
 		[ 16r27 ] -> [ self daa ].
 		[ 16r2F ] -> [ self cpl ].
