@@ -1,6 +1,6 @@
 {
 	"commentStamp" : "",
-	"super" : "ClassTestCase",
+	"super" : "Object",
 	"category" : "QAOP-Z80",
 	"classinstvars" : [ ],
 	"pools" : [ ],
@@ -16,6 +16,7 @@
 		"FZ"
 	],
 	"instvars" : [
+		"env",
 		"PC",
 		"SP",
 		"A",
