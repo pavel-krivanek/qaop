@@ -1,5 +1,5 @@
 instructions
-add16: a to: b
+add16: a with: b
 
 	| r |
 	
