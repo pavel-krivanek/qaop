@@ -8,3 +8,6 @@ reset
 		:= 0. 
 "	PC := IFF := IM := 0."
 	self af: (SP := 16rFFFF).
+	
+	time := 0.
+	time_limit := 100.

@@ -65,4 +65,4 @@ opcodes03: c
 		[ 16r7D ] -> [ A := HL & 16rFF ].
 		[ 16r7E ] -> [ A := env mem: HL. time := time + 3].
 
-} 
+} otherwise: [  ].

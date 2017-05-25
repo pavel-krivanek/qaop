@@ -96,4 +96,4 @@ opcodes01: c
 		[ 16r1C ] -> [ E := self inc: E. ].
 		[ 16r1D ] -> [ E := self dec: E. ].
 		[ 16r1E ] -> [ E := self imm8 ].
- } 
+ } otherwise: [  ].

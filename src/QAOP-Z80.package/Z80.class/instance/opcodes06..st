@@ -9,4 +9,4 @@ opcodes06: c
 		[ 16rEF ] -> [ self push: PC. PC := c-199 ].
 		[ 16rF7 ] -> [ self push: PC. PC := c-199 ].
 		[ 16rFF ] -> [ self push: PC. PC := c-199 ].
-	}
+	} otherwise: [  ].

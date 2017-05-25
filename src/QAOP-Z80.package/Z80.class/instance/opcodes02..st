@@ -49,4 +49,4 @@ opcodes02: c
 		[ 16r1F ] -> [ 
 			self rot: ((A * 16r201) | ((Ff & 16r100) >>> 1))].
 		
- } 
+ } otherwise: [  ].

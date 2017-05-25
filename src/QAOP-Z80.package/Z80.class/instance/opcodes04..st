@@ -70,4 +70,4 @@ opcodes04: c
 		[ 16rFD ] -> [ self group_xy: c ].
 		[ 16rCB ] -> [ self group_cb: c ].
 		[ 16rED ] -> [ self group_ed: c ].
-} 
+} otherwise: [  ].

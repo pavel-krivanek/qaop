@@ -96,4 +96,4 @@ opcodes05: c
 		[ 16rF9 ] -> [ SP := HL. time := time + 2. ].
 	
 
-} 
+} otherwise: [  ].
