@@ -17,4 +17,4 @@ flags
 		ifFalse: [ 
 			a := 16r9669*FP.
 			a := (r bitXor: (r >> 4)) & 16rF ].	".....P.."
-	^ f | b & FP
+	^ f | ((a >>> b) & FP)
