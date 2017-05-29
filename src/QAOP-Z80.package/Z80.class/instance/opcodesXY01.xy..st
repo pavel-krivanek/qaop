@@ -3,7 +3,7 @@ opcodesXY01: c xy: aXY
 	
 	| v xy |
 
-	xy := aXY
+	xy := aXY.
 	
 	c caseOf: { 
 		[ 16r08 ] -> [ self ex_af ].
@@ -60,6 +60,24 @@ opcodesXY01: c xy: aXY
 			MP := (v := self imm16) + 1.
 			A := env mem16: v.
 			time := time + 3].
+		[ 16r04 ] -> [ B := self inc: B ].
+		[ 16r05 ] -> [ B := self dec: B ].
+		[ 16r06 ] -> [ B := self imm8 ].
+		[ 16r0C ] -> [ C := self inc: C ].
+		[ 16r0D ] -> [ C := self dec: C ].
+		[ 16r0E ] -> [ C := self imm8 ].
+		[ 16r14 ] -> [ D := self inc: D ].
+		[ 16r15 ] -> [ D := self dec: D ].
+		[ 16r16 ] -> [ D := self imm8 ].
+		[ 16r1C ] -> [ E := self inc: E ].
+		[ 16r1D ] -> [ E := self dec: E ].
+		[ 16r1E ] -> [ E := self imm8 ].
+		[ 16r24 ] -> [ xy := xy & 16rFF | ((self inc: (xy >>> 8)) << 8) ].
+		[ 16r25 ] -> [ xy := xy & 16rFF | ((self dec: (xy >>> 8)) << 8) ].
+		[ 16r26 ] -> [ xy := xy & 16rFF | ((self imm8) << 8) ].
+		[ 16r2C ] -> [ xy := xy & 16rFF00 | (self inc: (xy & 16rFF)) ].
+		[ 16r2D ] -> [ xy := xy & 16rFF00 | (self dec: (xy & 16rFF)) ].
+		[ 16r2E ] -> [ xy := xy & 16rFF00 | (self imm8) ].
 
  } otherwise: [  ].
 
