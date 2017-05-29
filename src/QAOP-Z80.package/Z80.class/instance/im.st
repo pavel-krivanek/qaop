@@ -4,5 +4,5 @@ im
 	| v |
 	
 	v := IM.
-	^ (v = 0) ifTrue: [ v ] ifFalse: [ v -1 ].
+	^ (v = 0) ifTrue: [ v ] ifFalse: [ v - 1 ].
 	
