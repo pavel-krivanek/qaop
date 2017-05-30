@@ -69,7 +69,6 @@ opcodesXY02: c xy: aXY
 		[ 16r5E ] -> [ E := env mem: (self getd: xy). time := time + 3 ].
 		[ 16r5F ] -> [ E := A ].
 
-
  } otherwise: [  ].
 
 	^ xy
