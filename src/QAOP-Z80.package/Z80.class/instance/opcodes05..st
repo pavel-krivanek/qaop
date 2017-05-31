@@ -68,7 +68,6 @@ opcodes05: c
 		[ 16rEE ] -> [ self xor: self imm8 ].
 		[ 16rF6 ] -> [ self or: self imm8 ].
 		[ 16rFE ] -> [ self cp: self imm8 ].
-		[ 16rE6 ] -> [ self and: self imm8 ].
 		[ 16rC9 ] -> [ MP := PC := self pop ].
 		[ 16rCD ] -> [ v := self imm16. self push: PC. MP := PC := v ].
 		[ 16rD3 ] -> [ 
