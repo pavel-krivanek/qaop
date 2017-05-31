@@ -43,6 +43,34 @@ opcodesXY03: c xy: aXY
 		[ 16r81 ] -> [ self add: C ].
 		[ 16r82 ] -> [ self add: D ].
 		[ 16r83 ] -> [ self add: E ].
+		[ 16r84 ] -> [ self add: (xy >>> 8) ].
+		[ 16r85 ] -> [ self add: (xy & 16rFF) ].
+		[ 16r86 ] -> [ self add: (env mem: (self getd: xy)). time := time + 3 ].
+		[ 16r87 ] -> [ self add: A ].
+		[ 16r88 ] -> [ self adc: B ].
+		[ 16r89 ] -> [ self adc: C ].
+		[ 16r8A ] -> [ self adc: D ].
+		[ 16r8B ] -> [ self adc: E ].
+		[ 16r8C ] -> [ self adc: (xy >>> 8) ].
+		[ 16r8D ] -> [ self adc: (xy & 16rFF) ].
+		[ 16r8E ] -> [ self adc: (env mem: (self getd: xy)). time := time + 3 ].
+		[ 16r8F ] -> [ self adc: A ].
+		[ 16r90 ] -> [ self sub: B ].
+		[ 16r91 ] -> [ self sub: C ].
+		[ 16r92 ] -> [ self sub: D ].
+		[ 16r93 ] -> [ self sub: E ].
+		[ 16r94 ] -> [ self sub: (xy >>> 8) ].
+		[ 16r95 ] -> [ self sub: (xy & 16rFF) ].
+		[ 16r96 ] -> [ self sub: (env mem: (self getd: xy)). time := time + 3 ].
+		[ 16r97 ] -> [ self sub: A ].
+		[ 16r98 ] -> [ self sbc: B ].
+		[ 16r99 ] -> [ self sbc: C ].
+		[ 16r9A ] -> [ self sbc: D ].
+		[ 16r9B ] -> [ self sbc: E ].
+		[ 16r9C ] -> [ self sbc: (xy >>> 8) ].
+		[ 16r9D ] -> [ self sbc: (xy & 16rFF) ].
+		[ 16r9E ] -> [ self sbc: (env mem: (self getd: xy)). time := time + 3 ].
+		[ 16r9F ] -> [ self sbc: A ].
 	
  } otherwise: [  ].
 

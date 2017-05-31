@@ -11,6 +11,7 @@ group_xy: c0
 		xy := self opcodesXY01: c xy: xy.
 		xy := self opcodesXY02: c xy: xy.
 		xy := self opcodesXY03: c xy: xy.
+		xy := self opcodesXY04: c xy: xy.
 		(c0 & 16rDD) ifTrue: [ IX := xy ] ifFalse: [ IY := xy ].
 		^ self.
 	] repeat.
