@@ -8,7 +8,7 @@ opcodesXY05: c xy: aXY
 	c caseOf: { 
 		[ 16rDD ] -> [ c0 := c ].
 		[ 16rFD ] -> [ c0 := c ].
-		[ 16rCB ] -> [ xy := self group_cb: xy ].
+		[ 16rCB ] -> [ xy := self group_xy_cb: xy ].
 		[ 16rED ] -> [ xy := self group_ed: xy ].
 		[ 16rC0 ] -> [ time := time + 1. (Fr ~= 0) ifTrue: [ MP := PC := self pop ] ].
 		[ 16rC2 ] -> [ self jp: (Fr ~= 0)].
