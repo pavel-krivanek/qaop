@@ -71,7 +71,7 @@ opcodes05: c
 		[ 16rC9 ] -> [ MP := PC := self pop ].
 		[ 16rCD ] -> [ v := self imm16. self push: PC. MP := PC := v ].
 		[ 16rD3 ] -> [ 
-			env out: (v := self imm8) | (A<<8) value: A.
+			env out: (v := (self imm8 | (A<<8))) value: A.
 			MP := ((v+1) & 16rFF) | (v&16rFF00). 
 			time := time + 4. ].
 		[ 16rD8 ] -> [ 
