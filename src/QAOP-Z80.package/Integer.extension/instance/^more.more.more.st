@@ -2,5 +2,7 @@
 >>> shiftAmount
 	"right shift"
 	
+	| val |
 	shiftAmount < 0 ifTrue: [self error: 'negative arg'].
-	^ self bitShift: 0 - shiftAmount
+	val := self < 0 ifFalse: [ self ] ifTrue: [ (self bitInvert32 + 1) negated ].
+	^ val bitShift: 0 - shiftAmount

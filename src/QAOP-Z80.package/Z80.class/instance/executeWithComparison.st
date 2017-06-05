@@ -7,11 +7,11 @@ executeWithComparison
 		self doHalt.
 		^ self ].
 
-	lines := 'out.txt' asFileReference readStream contents lines.
+	lines := 'out.txt' asFileReference readStream contents lines allButFirst: 2.
 	stepIndex := 1.
 	
 	[ 
-		stepIndex = 21 ifTrue: [" self halt." ].
+		stepIndex = (196628 - 1) ifTrue: [ self halt. ].
 		self stepWithComparison: (STON fromString: (lines at: stepIndex)).
 		stepIndex := stepIndex + 1.
 	time_limit - time > 0 ] whileTrue. 

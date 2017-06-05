@@ -54,7 +54,7 @@ group_ed: opcode
 			B := v >>> 8.
 			C := v & 16rFF.
 			time := time + 6].
-		[ 16r52 ] -> [ self sbc_hl: (D << 8 | E).].
+		[ 16r52 ] -> [ self halt.self sbc_hl: (D << 8 | E).].
 		[ 16r5A ] -> [ self adc_hl: (D << 8 | E).].
 		[ 16r53 ] -> [ 
 			MP := (v := self imm16) + 1.
