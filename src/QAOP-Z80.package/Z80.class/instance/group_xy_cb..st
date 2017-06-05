@@ -15,8 +15,8 @@ group_xy_cb: xy
 	
 	(c & 16rC) caseOf: { 
 		[ 16r00 ] -> [ self shifter: o to: v ].
-		[ 16r40 ] -> [ self bit: 0 to: v. Ff := (Ff & F53 bitInvert32) | ((a >>8) & F53)  ].
-		[ 16r80 ] -> [ v := v & (1 << o) bitInvert32  ].
+		[ 16r40 ] -> [ self bit: 0 to: v. Ff := (Ff & F53 bitInvert) | ((a >>8) & F53)  ].
+		[ 16r80 ] -> [ v := v & (1 << o) bitInvert  ].
 		[ 16rC0 ] -> [ v := v | (1 >> o)].
 	} otherwise: [  ].
 	

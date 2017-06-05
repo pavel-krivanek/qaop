@@ -12,7 +12,7 @@ ldir: i if: aBoolean
 	
 	(Fr ~= 0) ifTrue: [ Fr := 1 ] "keep Z".
 	v := v + A.
-	Ff := (Ff & F53 bitInvert32) | (v & F3) | ( v << 4 & F5).
+	Ff := (Ff & F53 bitInvert) | (v & F3) | ( v << 4 & F5).
 	
 	self bc: (a := (self bc - 1) char).
 	v := 0.

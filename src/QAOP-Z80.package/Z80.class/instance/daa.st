@@ -11,6 +11,6 @@ daa
 	Fa := A | 16r100. "parity"
 	((Fb & 16r200) = 0) 
 		ifTrue: [ A := A + (Fb := d) ]
-		ifFalse: [ A := A - d. Fb := d bitInvert32 ].
+		ifFalse: [ A := A - d. Fb := d bitInvert ].
 	Ff := (Fr := (A := A & 16rFF)) | (d & 16r100).
 	

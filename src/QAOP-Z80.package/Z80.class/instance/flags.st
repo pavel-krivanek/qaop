@@ -10,7 +10,7 @@ flags
 	ra := r bitXor: a.
 	f := f | (u & FN).		"......N."
 	f := ((ra bitXor: b) bitXor: u) & FH.	"...H...."
-	((a & 16rFF bitInvert32) = 0) 
+	((a & 16rFF bitInvert) = 0) 
 		ifTrue: [ 
 			a := ra & (b bitXor: r).		".....V.."
 			b := 5. ]

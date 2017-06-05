@@ -9,7 +9,7 @@ cpir: i if: aBoolean
 	time := time + 8.
 	
 	Fr := v & 16r7F | (v >>> 7).
-	Fb := (b | 16r80) bitInvert32.
+	Fb := (b | 16r80) bitInvert.
 	Fa := A & 16r7F.
 	
 	self bc: (a := (self bc - 1) char).
@@ -20,6 +20,6 @@ cpir: i if: aBoolean
 			MP := (PC := (PC-2) char) + 1.
 			time := time + 5. ] ].
 	
-	Ff := (Ff & (16rFF bitInvert32)) | (v & F53 bitInvert32 ).
+	Ff := (Ff & (16rFF bitInvert)) | (v & F53 bitInvert ).
 	((((v bitXor: b) bitXor: A) & FH) ~= 0) ifTrue: [ v := v - 1 ].
 	Ff := Ff | (v << 4 & 26r20 ) | (v & 8).

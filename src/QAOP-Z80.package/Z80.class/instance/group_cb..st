@@ -30,21 +30,21 @@ group_cb: arg
 		[ 16r45 ] -> [ self bit: o to: (HL & 16rFF) ].
 		[ 16r46 ] -> [ 
 			self bit: o to: (env mem: HL).
-			Ff := (Ff & F53 bitInvert32) | ((MP >>> 8) & F53).
+			Ff := (Ff & F53 bitInvert) | ((MP >>> 8) & F53).
 			time := time + 4. ].
 		[ 16r47 ] -> [ self bit: o to: A ].
-		[ 16r80 ] -> [ B := B & (1 << 0) bitInvert32 ].
-		[ 16r81 ] -> [ C := C & (1 << 0) bitInvert32 ].
-		[ 16r82 ] -> [ D := D & (1 << 0) bitInvert32 ].
-		[ 16r83 ] -> [ E := E & (1 << 0) bitInvert32 ].
-		[ 16r84 ] -> [ HL := HL & (16r100 << o) bitInvert32 ].
-		[ 16r85 ] -> [ HL := HL & (1 << o) bitInvert32 ].
+		[ 16r80 ] -> [ B := B & (1 << 0) bitInvert ].
+		[ 16r81 ] -> [ C := C & (1 << 0) bitInvert ].
+		[ 16r82 ] -> [ D := D & (1 << 0) bitInvert ].
+		[ 16r83 ] -> [ E := E & (1 << 0) bitInvert ].
+		[ 16r84 ] -> [ HL := HL & (16r100 << o) bitInvert ].
+		[ 16r85 ] -> [ HL := HL & (1 << o) bitInvert ].
 		[ 16r86 ] -> [ 
-			v := (env mem: HL) & (1 << o) bitInvert32.
+			v := (env mem: HL) & (1 << o) bitInvert.
 			time := time + 4.
 			env mem: HL value: v.
 			time := time + 3. ].
-		[ 16r87 ] -> [ A := A & (1 << 0) bitInvert32 ].
+		[ 16r87 ] -> [ A := A & (1 << 0) bitInvert ].
 		[ 16rC0 ] -> [ B := B | (1 << 0) ].
 		[ 16rC1 ] -> [ C := C | (1 << 0) ].
 		[ 16rC2 ] -> [ D := D | (1 << 0) ].
@@ -52,7 +52,7 @@ group_cb: arg
 		[ 16rC4 ] -> [ HL := HL | (16r100 << 0) ].
 		[ 16rC5 ] -> [ HL := HL | (1 << 0) ].
 		[ 16rC6 ] -> [ 
-			v := (env mem: HL) | (1 << o) bitInvert32.
+			v := (env mem: HL) | (1 << o) bitInvert.
 			time := time + 4.
 			env mem: HL value: v.
 			time := time + 3. ].

@@ -1,4 +1,5 @@
 *QAOP-Z80
 byte
 
-	^ self bitAnd: 16rFF
+	^ (self > 128) ifTrue: [ self - 256  ] ifFalse: [ self ]
+	

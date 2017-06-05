@@ -8,4 +8,4 @@ startupSetup
 		:= 0. 
 	
 	time := 0.
-	time_limit := 100.
+	time_limit := 100000000000.
