@@ -41,11 +41,11 @@ opcodes03: c
 		[ 16r65 ] -> [ HL := (HL & 16rFF) | (((HL & 16rFF) << 8)) ].
 		[ 16r66 ] -> [ HL := (HL & 16rFF) | (((env mem: HL) << 8)). time := time + 3. ].
 		[ 16r67 ] -> [ HL := (HL & 16rFF) | (A << 8) ].
-		[ 16r68 ] -> [ HL := (HL & 16rFF) | B ].
-		[ 16r69 ] -> [ HL := (HL & 16rFF) | C ].
-		[ 16r6A ] -> [ HL := (HL & 16rFF) | D ].
-		[ 16r6B ] -> [ HL := (HL & 16rFF) | E ].
-		[ 16r6C ] -> [ HL := (HL & 16rFF) | (HL >>> 8) ].		
+		[ 16r68 ] -> [ HL := (HL & 16rFF00) | B ].
+		[ 16r69 ] -> [ HL := (HL & 16rFF00) | C ].
+		[ 16r6A ] -> [ HL := (HL & 16rFF00) | D ].
+		[ 16r6B ] -> [ HL := (HL & 16rFF00) | E ].
+		[ 16r6C ] -> [ HL := (HL & 16rFF00) | (HL >>> 8) ].		
  		[ 16r6E ] -> [ HL := (HL & 16rFF00) | (env mem: HL). time := time + 3. ].
  		[ 16r6F ] -> [ HL := (HL & 16rFF00) | A. time := time + 3. ].
  		[ 16r70 ] -> [ env mem: HL value: B. time := time + 3. ].
