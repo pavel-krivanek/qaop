@@ -54,7 +54,7 @@ group_ed: opcode
 			B := v >>> 8.
 			C := v & 16rFF.
 			time := time + 6].
-		[ 16r52 ] -> [ self halt.self sbc_hl: (D << 8 | E).].
+		[ 16r52 ] -> [ self sbc_hl: (D << 8 | E).].
 		[ 16r5A ] -> [ self adc_hl: (D << 8 | E).].
 		[ 16r53 ] -> [ 
 			MP := (v := self imm16) + 1.
@@ -96,14 +96,14 @@ group_ed: opcode
 		ifTrue: [ IM := (c >> 3) & 3. ]. 		
 
 	c caseOf: { 
-		[ 16rA0] -> [ self ldir: 1 if: false ].
-		[ 16rA8] -> [ self ldir: -1 if: false ].
-		[ 16rB0] -> [ self ldir: 1 if: true ].
-		[ 16rB8] -> [ self ldir: -1 if: true ].
-		[ 16rA0] -> [ self cpir: 1 if: false ].
-		[ 16rA8] -> [ self cpir: -1 if: false ].
-		[ 16rB0] -> [ self cpir: 1 if: true ].
-		[ 16rB8] -> [ self cpir: -1 if: true ].
+		[ 16rA0 ] -> [ self ldir: 1 if: false ].
+		[ 16rA8 ] -> [ self ldir: -1 if: false ].
+		[ 16rB0 ] -> [ self ldir: 1 if: true ].
+		[ 16rB8 ] -> [ self ldir: -1 if: true ].
+		[ 16rA1 ] -> [ self cpir: 1 if: false ].
+		[ 16rA9 ] -> [ self cpir: -1 if: false ].
+		[ 16rB1 ] -> [ self cpir: 1 if: true ].
+		[ 16rB9 ] -> [ self cpir: -1 if: true ].
 	} otherwise: [  ].
 	
 	(#(16rA2 16rA3 16rAA 16rAB 16rB2 16rB3 16rBA 16rBB) includes: c)   
