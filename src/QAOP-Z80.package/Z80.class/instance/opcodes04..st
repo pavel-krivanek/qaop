@@ -2,7 +2,7 @@ execution
 opcodes04: c
 		
 	c caseOf: { 
-		[ 16rA7 ] -> [ Fa := (Ff := Fr := Fa) bitInvert. Fb := 0. ].
+		[ 16rA7 ] -> [ Fa := (Ff := Fr := A) bitInvert. Fb := 0. ].
 		[ 16rAF ] -> [ A := Ff := Fr := Fb := 0. Fa := 16r100. ].
 		[ 16r80 ] -> [ self add: B ].
 		[ 16r81 ] -> [ self add: C ].

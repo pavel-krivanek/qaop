@@ -19,7 +19,7 @@ opcodes01: c
 			MP := PC := ( PC + 1 + (env mem: PC) byte ) char.
 			time := time + 8. ].
 		[ 16r09 ] -> [ HL := self add16: HL with: (B << 8 | C) ].
-		[ 16r19 ] -> [ self halt. HL := self add16: HL with: (D << 8 | E) ].
+		[ 16r19 ] -> [  HL := self add16: HL with: (D << 8 | E) ].
 		[ 16r29 ] -> [ HL := self add16: HL with: HL ].
 		[ 16r39 ] -> [ HL := self add16: HL with: SP ].
 		[ 16r01 ] -> [ 

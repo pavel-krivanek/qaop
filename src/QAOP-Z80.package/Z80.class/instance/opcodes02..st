@@ -26,7 +26,7 @@ opcodes02: c
 			time := time + 4.
 			env mem: HL value: v.
 			time := time + 3].
-		[ 16r36 ] -> [ 
+		[ 16r36 ] -> [
 			env mem: HL value: self imm8.
 			time := time + 3].
 		[ 16r3C ] -> [ A := self inc: A. ].
