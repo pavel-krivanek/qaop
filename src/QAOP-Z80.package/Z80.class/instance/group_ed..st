@@ -86,7 +86,7 @@ group_ed: opcode
 			MP := (v := self imm16) + 1.
 			SP := env mem16: v.
 			time := time + 6].
-		}.
+	} otherwise: [  ].
 		
 	(#(16r44 16r4C 16r54 16r5C 16r64 16r6C 16r74 16r7C) includes: c)   
 		ifTrue: [ v:= A. A := 0. self sub: v. ]. 
@@ -104,7 +104,7 @@ group_ed: opcode
 		[ 16rA8] -> [ self cpir: -1 if: false ].
 		[ 16rB0] -> [ self cpir: 1 if: true ].
 		[ 16rB8] -> [ self cpir: -1 if: true ].
-	}.
+	} otherwise: [  ].
 	
 	(#(16rA2 16rA3 16rAA 16rAB 16rB2 16rB3 16rBA 16rBB) includes: c)   
 		ifTrue: [ self inir_otir: c ]. 		
