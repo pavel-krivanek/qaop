@@ -13,7 +13,7 @@ opcodesXY02: c xy: aXY
 			env mem: a value: v.
 			time := time + 3. ].
 		[ 16r35 ] -> [ 
-			| a | self halt.
+			| a | 
 			v := self dec: (env mem: (a := self getd: xy)).
 			time := time + 4.
 			env mem: a value: v.

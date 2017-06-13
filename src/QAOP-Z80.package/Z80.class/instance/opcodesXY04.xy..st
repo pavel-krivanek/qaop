@@ -38,10 +38,6 @@ opcodesXY04: c xy: aXY
 		[ 16rBD ] -> [ self cp: (xy & 16rFF) ].
 		[ 16rBE ] -> [ self cp: (env mem: (self getd: xy)). time := time + 3 ].
 		[ 16rBF ] -> [ self cp: A ].
-
-	
  } otherwise: [  ].
-
-	
 
 	^ xy

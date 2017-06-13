@@ -2,7 +2,7 @@ execution
 group_xy_cb: xy
 
 	| pc a c v o |
-	
+
 	pc := PC.
 	a := MP := (xy + (env mem: pc) byte) char.
 	time := time + 3.
@@ -13,14 +13,14 @@ group_xy_cb: xy
 	time := time + 4.
 	o := (c >>> 3) & 7.
 	
-	(c & 16rC) caseOf: { 
+	(c & 16rC0) caseOf: { 
 		[ 16r00 ] -> [ self shifter: o to: v ].
 		[ 16r40 ] -> [ self bit: 0 to: v. Ff := (Ff & F53 bitInvert) | ((a >>8) & F53)  ].
 		[ 16r80 ] -> [ v := v & (1 << o) bitInvert  ].
-		[ 16rC0 ] -> [ v := v | (1 >> o)].
+		[ 16rC0 ] -> [ v := v | (1 << o)].
 	} otherwise: [  ].
 	
-	env mem: a to: v.
+	env mem: a value: v.
 	time := time + 3.
 
 	(c & 16r07) caseOf: { 
@@ -31,7 +31,7 @@ group_xy_cb: xy
 		[ 4 ] -> [ HL := (HL & 16r00FF) | (v<<8) ].
 		[ 5 ] -> [ HL := (HL & 16rFF00) | v ].
 		[ 7 ] -> [ A := v ].
-	}
+	} otherwise: [ ].
 
-	
+	^ xy
 	
