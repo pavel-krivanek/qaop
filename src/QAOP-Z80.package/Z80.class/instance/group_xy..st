@@ -1,6 +1,6 @@
 execution
 group_xy: c0
-
+self halt.
 	[
 		| xy c |
 		xy := (c0 == 16rD0) ifTrue: [ IX ] ifFalse: [ IY ].
