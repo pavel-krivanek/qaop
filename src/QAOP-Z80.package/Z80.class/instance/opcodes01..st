@@ -8,7 +8,7 @@ opcodes01: c
 		[ 16r10 ] -> [ | d | 
 			time := time + 1. 
 			v := PC. 
-			d := env mem: v. 
+			d := (env mem: v) byte. 
 			v := v + 1.
 			time := time + 3.
 			((B := (B - 1) & 16rFF ) ~= 0) ifTrue: [

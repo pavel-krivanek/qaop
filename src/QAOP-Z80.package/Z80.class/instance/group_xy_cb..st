@@ -1,7 +1,7 @@
 execution
 group_xy_cb: xy
 
-	| pc a c v o |
+	| pc a c v o | 
 
 	pc := PC.
 	a := MP := (xy + (env mem: pc) byte) char.
@@ -15,7 +15,7 @@ group_xy_cb: xy
 	
 	(c & 16rC0) caseOf: { 
 		[ 16r00 ] -> [ self shifter: o to: v ].
-		[ 16r40 ] -> [ self bit: 0 to: v. Ff := (Ff & F53 bitInvert) | ((a >>8) & F53)  ].
+		[ 16r40 ] -> [ self bit: o to: v. Ff := (Ff & F53 bitInvert) | ((a >>8) & F53)  ].
 		[ 16r80 ] -> [ v := v & (1 << o) bitInvert  ].
 		[ 16rC0 ] -> [ v := v | (1 << o)].
 	} otherwise: [  ].
