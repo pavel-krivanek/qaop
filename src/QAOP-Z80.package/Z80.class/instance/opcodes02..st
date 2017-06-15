@@ -41,9 +41,9 @@ opcodes02: c
 		[ 16r38 ] -> [ 
 			((Ff & 16r100) ~= 0) ifTrue: [ self jr ] ifFalse: [ self imm8 ]].
 		[ 16r07 ] -> [ 
-			self rot: ((A * 16r101) >>> 7)].
-		[ 16r0F ] -> [ 
-			self rot: ((A * 16r80800000) >>> 24)].
+			self rot: ((A * 16r101) asJavaSignedInteger >>> 7)].
+		[ 16r0F ] -> [
+			self rot: ((A * 16r80800000) asJavaSignedInteger >> 24)].
 		[ 16r17 ] -> [ 
 			self rot: ((A << 1) | ((Ff >>> 8) & 1))].
 		[ 16r1F ] -> [ 
