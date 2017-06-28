@@ -2,7 +2,6 @@ instructions
 ldir: i if: aBoolean
 
 	| a v |
-	
 	v := env mem: (a := HL).
 	HL := (a+i) char.
 	time := time + 3.

@@ -1,15 +1,14 @@
 execution
 group_cb: arg
 
-	| v c o |
-	
+	| v c o | 
 	c := env m1: PC ir: (IR | (R & 16r7F)).
 	R := R + 1.
 	PC := (PC + 1) char.
 	time := time + 4.
 	o := (c >>> 3) & 7.
 	
-	c caseOf: { 
+	(c & 16rC7) caseOf: { 
 		[ 16r00 ] -> [ B := self shifter: o to: B ].
 		[ 16r01 ] -> [ C := self shifter: o to: C ].
 		[ 16r02 ] -> [ D := self shifter: o to: D ].
@@ -52,7 +51,7 @@ group_cb: arg
 		[ 16rC4 ] -> [ HL := HL | (16r100 << 0) ].
 		[ 16rC5 ] -> [ HL := HL | (1 << 0) ].
 		[ 16rC6 ] -> [ 
-			v := (env mem: HL) | (1 << o) bitInvert.
+			v := (env mem: HL) | (1 << o).
 			time := time + 4.
 			env mem: HL value: v.
 			time := time + 3. ].
