@@ -2,7 +2,7 @@ accessing structure variables
 flags
 
 	| f a b r ra u |
-	
+
 	f := Ff. a := Fa. b := Fb. r := Fr.
 	f := f&(FS|F53) | ((f>>>8)&FC). "S.5.3..C"
 	u := b >> 8.
