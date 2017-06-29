@@ -2,6 +2,7 @@ adding
 push: v
 
 	| sp |
+	
 	time := time + 1.
 	sp := SP.
 	env mem: (sp-1) char value: (v >>> 8). 
