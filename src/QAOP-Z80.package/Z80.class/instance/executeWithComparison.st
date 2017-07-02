@@ -15,7 +15,7 @@ executeWithComparison
 	[ 
 		"((env mem: 23730) = 22527) ifTrue: [ self halt ]."
 	"	stepIndex = (648699 - 1) ifTrue: [ self halt. ]."
-		stepIndex = (24-1) ifTrue: [ self halt. ].
+		stepIndex = (22-1) ifTrue: [ self halt. ].
  ""		self stepWithComparison: (STON fromString: (lines at: stepIndex)).
 		stepIndex := stepIndex + 1.
 	time_limit - time > 0.

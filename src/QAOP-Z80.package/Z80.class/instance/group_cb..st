@@ -22,7 +22,7 @@ group_cb: arg
 			time := time + 4.
 			env mem: HL value: v.
 			time := time + 3. ].
-		[ 16r07 ] -> [ self halt. A := self shifter: o to: A ].
+		[ 16r07 ] -> [ A := self shifter: o to: A ].
 		[ 16r40 ] -> [ self bit: o to: B ].
 		[ 16r41 ] -> [ self bit: o to: C ].
 		[ 16r42 ] -> [ self bit: o to: D ].
