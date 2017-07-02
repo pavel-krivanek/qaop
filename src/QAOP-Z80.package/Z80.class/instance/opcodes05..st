@@ -74,7 +74,7 @@ opcodes05: c
 			env out: (v := (self imm8 | (A<<8))) value: A.
 			MP := ((v+1) & 16rFF) | (v&16rFF00). 
 			time := time + 4. ].
-		[ 16rD8 ] -> [ 
+		[ 16rDB ] -> [ 
 			MP := (v := (self imm8 | (A<<8)))+1.
 			A := env in: v.
 			time := time + 4. ].
