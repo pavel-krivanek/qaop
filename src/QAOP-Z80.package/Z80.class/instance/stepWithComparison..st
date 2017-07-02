@@ -8,6 +8,8 @@ stepWithComparison: aStateDictionary
 	PC := (PC+1) char.
 	time := time + 4.
 	
+	calledOpcodes add: c.
+
 	self assert: (self correspondsTo: aStateDictionary opcode: c	) isEmpty.
 	
 	self opcodes01: c.

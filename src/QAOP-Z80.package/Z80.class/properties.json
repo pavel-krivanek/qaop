@@ -48,7 +48,8 @@
 		"IM",
 		"halted",
 		"time",
-		"time_limit"
+		"time_limit",
+		"calledOpcodes"
 	],
 	"name" : "Z80",
 	"type" : "normal"

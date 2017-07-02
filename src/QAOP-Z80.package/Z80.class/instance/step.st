@@ -8,6 +8,8 @@ step
 	PC := (PC+1) char.
 	time := time + 4.
 	
+	calledOpcodes add: c.
+	
 	self opcodes01: c.
 	self opcodes02: c.
 	self opcodes03: c.

@@ -4,6 +4,7 @@ execute
 	| stepIndex |
 	
 	stepIndex := 1.
+	calledOpcodes := Set new.
 
 	halted ifTrue: [ 
 		self doHalt.
