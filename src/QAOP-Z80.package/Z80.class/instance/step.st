@@ -7,9 +7,7 @@ step
 	c := env m1: PC ir: (IR | (R & 16r7F)).
 	PC := (PC+1) char.
 	time := time + 4.
-	
-	calledOpcodes add: c.
-	
+		
 	self opcodes01: c.
 	self opcodes02: c.
 	self opcodes03: c.
