@@ -6,8 +6,9 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"z80",
-		"memory"
+		"cpu",
+		"memory",
+		"keyboard"
 	],
 	"name" : "Z80Environment",
 	"type" : "normal"

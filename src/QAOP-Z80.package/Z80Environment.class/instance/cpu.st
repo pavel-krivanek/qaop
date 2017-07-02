@@ -1,4 +1,4 @@
 as yet unclassified
-z80
+cpu
 
-	^ z80
+	^ cpu
