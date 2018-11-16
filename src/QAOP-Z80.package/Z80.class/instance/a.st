@@ -1,3 +1,0 @@
-accessing registers
-a 
-	^ A

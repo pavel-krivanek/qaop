@@ -1,4 +1,0 @@
-accessing registers
-pc
-
-	^ PC

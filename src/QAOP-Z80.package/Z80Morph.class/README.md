@@ -1,1 +1,0 @@
-Z80Morph new  openInWindow

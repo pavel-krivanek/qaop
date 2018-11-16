@@ -1,4 +1,0 @@
-accessing registers
-iff
-
-	^ IFF
