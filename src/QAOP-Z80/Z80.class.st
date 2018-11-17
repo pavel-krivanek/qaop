@@ -1911,7 +1911,7 @@ Z80 >> startupSetup [
 		:= 0. 
 	
 	time := 0.
-	time_limit := 100000000000.
+	time_limit := 100.
 ]
 
 { #category : #execution }

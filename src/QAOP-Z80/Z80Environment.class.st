@@ -14,9 +14,13 @@ Class {
 	#instVars : [
 		'cpu',
 		'memory',
-		'keyboard'
+		'keyboard',
+		'time',
+		'timet',
+		'interrupted',
+		'ctime'
 	],
-	#category : 'QAOP-Z80'
+	#category : #'QAOP-Z80'
 }
 
 { #category : #initialization }
@@ -29,6 +33,70 @@ Z80Environment >> FRSTART [
 Z80Environment >> FRTIME [
 
 	^ 69888
+]
+
+{ #category : #evaluating }
+Z80Environment >> NOCONT [
+
+	^ 99999
+]
+
+{ #category : #evaluating }
+Z80Environment >> SCRENDT [
+
+	^ 42910 "191*224+126"
+]
+
+{ #category : #evaluating }
+Z80Environment >> cont1: aTime [
+
+	| t |
+	
+	t := aTime + cpu time.
+	(t < 0 or: [ t > self SCRENDT ]) ifTrue: [ ^ self ].
+	(t bitAnd: 7) >= 6 ifTrue: [ ^ self ].
+	((t bitAnd: 224) < 126) ifTrue: [ 
+		cpu time: cpu time + (6 - t bitAnd: 7) ].
+	
+]
+
+{ #category : #evaluating }
+Z80Environment >> cont: nArg [
+
+	| n s k t |
+	
+	n := nArg.
+	t := ctime.
+	(t + n <= 0) ifTrue: [ ^ self ].
+	s := self SCRENDT - t.
+	(s < 0) ifTrue: [ ^ self ].
+	s := s \\ 224.
+	(s > 126) 
+		ifTrue: [ 
+			n := n - (s - 126).
+			n <= 0 ifTrue: [ ^ self ].
+			t := 6.
+			k := 15 ] 
+		ifFalse: [ 
+			k := s >>> 3.
+			s := s bitAnd: 7.
+			s = 7 ifTrue: [ 
+				s := s - 1.
+				n := n - 1.
+				n = 0 ifTrue: [ ^ self ] ].
+			t := s ].
+		s := (s - 1) >> 1.
+		k < n ifTrue: [ n := k ].
+		cpu time: (t + (6*n)).
+]
+
+{ #category : #evaluating }
+Z80Environment >> contPort: port [
+
+	| n |
+	n := n := cpu.time - ctime.
+	n > 0 ifTrue: [ self cont: n ].
+
 ]
 
 { #category : #'as yet unclassified' }
@@ -64,7 +132,6 @@ Z80Environment >> form [
 { #category : #evaluating }
 Z80Environment >> frame [
 	
-
 		cpu time: self FRSTART.
 		cpu time_limit: self FRSTART + self FRTIME.
 		
@@ -78,18 +145,18 @@ Z80Environment >> frame [
 
 { #category : #evaluating }
 Z80Environment >> frames [
-	
 	[
 		cpu time: self FRSTART.
 		cpu time_limit: self FRSTART + self FRTIME.
 		
-		self form display.
-		self updateKeyboard.
+"		self form display.
+"		self updateKeyboard.
 		self refreshNew.
 		
 		cpu interrupt: 16rFF.
 		cpu execute.
-	] repeat.
+		self interrupted.
+	] whileFalse.
 ]
 
 { #category : #'as yet unclassified' }
@@ -100,7 +167,7 @@ Z80Environment >> halt: n ir: ir [
 
 { #category : #evaluating }
 Z80Environment >> in: port [
-
+self halt.
 	^ 191
 ]
 
@@ -123,6 +190,18 @@ Z80Environment >> initialize [
 	cpu startupSetup.
 	
 
+]
+
+{ #category : #accessing }
+Z80Environment >> interrupted [ 
+
+	^ interrupted
+]
+
+{ #category : #accessing }
+Z80Environment >> interrupted: aBoolean [
+
+	interrupted := aBoolean
 ]
 
 { #category : #'as yet unclassified' }
@@ -190,4 +269,18 @@ Z80Environment >> romFile [
 
 { #category : #initialization }
 Z80Environment >> updateKeyboard [
+
+	| m |
+	
+	keyboard := #(16rFF 16rFF 16rFF 16rFF 16rFF 16rFF 16rFF 16rFF).
+
+	m := { -1. -1. -1. -1. -1 }.
+   " // .......xxx row
+    // ....xxx... column
+    // ...x...... caps shift
+    // ..x....... symbol shift
+    // .x........ caps shift alone
+    // x......... symbol shift alone	"
+	
+"	self pressed: 2r00001001"
 ]

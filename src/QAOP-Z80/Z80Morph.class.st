@@ -43,9 +43,11 @@ Z80Morph >> initialize [
 { #category : #initialization }
 Z80Morph >> step [
 
-	environment frame.
+	environment interrupted: true.
+	environment frames.
 	form := environment form.
 	self changed.
+
 
 ]
 
