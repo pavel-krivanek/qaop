@@ -94,7 +94,7 @@ Z80Environment >> cont: nArg [
 Z80Environment >> contPort: port [
 
 	| n |
-	n := n := cpu.time - ctime.
+	n := n := cpu time - ctime.
 	n > 0 ifTrue: [ self cont: n ].
 
 ]
@@ -167,8 +167,27 @@ Z80Environment >> halt: n ir: ir [
 
 { #category : #evaluating }
 Z80Environment >> in: port [
-self halt.
-	^ 191
+
+	| v |
+	
+	self contPort: port.
+	
+	((port bitAnd: 16r00E0) = 0)
+		ifTrue: [ ^ self kemston ].
+	
+	v := 16rFF.
+
+	((port bitAnd: 16r0001) = 0) ifTrue: [ 
+		| e |
+		0 to: 7 do: [ :i |
+			((port bitAnd: 16r100) << i) = 0 ifTrue: [ 
+				v := v bitAnd: (keyboard at: i+1) ] ].
+		e := 0.
+		v := v bitAnd: 16rbf ]
+		ifFalse: [ 
+			cpu time >= 0 ifTrue: [ ] ].
+		
+	^ v.
 ]
 
 { #category : #initialization }
@@ -187,6 +206,8 @@ Z80Environment >> initialize [
 	
 	6144 to: 6912 do: [:i | memory at: i+1 put: 8r70 ]. "white"
 	
+	ctime := self NOCONT.
+	
 	cpu startupSetup.
 	
 
@@ -202,6 +223,12 @@ Z80Environment >> interrupted [
 Z80Environment >> interrupted: aBoolean [
 
 	interrupted := aBoolean
+]
+
+{ #category : #evaluating }
+Z80Environment >> kemston [
+
+	^ 0
 ]
 
 { #category : #'as yet unclassified' }
